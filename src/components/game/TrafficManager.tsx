@@ -152,10 +152,27 @@ export function TrafficManager({ speedRef, isPlaying }: { speedRef: React.Mutabl
     
     // Spawn logic based on virtual distance
     lastSpawnZ.current -= distanceTraveled;
-    if (lastSpawnZ.current < -30) { // Spawn every 30 units (distance depends on speed)
+    
+    // Determine spawn parameters based on difficulty
+    const diff = useGameStore.getState().difficulty;
+    let spawnInterval = 30;
+    let maxCarsToSpawn = 2;
+    let minCarsToSpawn = 1;
+
+    if (diff === 'easy') {
+      spawnInterval = 50;
+      maxCarsToSpawn = 1;
+      minCarsToSpawn = 1;
+    } else if (diff === 'hard') {
+      spawnInterval = 20;
+      maxCarsToSpawn = 3;
+      minCarsToSpawn = 2;
+    }
+
+    if (lastSpawnZ.current < -spawnInterval) { // Spawn every X units
       lastSpawnZ.current = 0;
       
-      const numCarsToSpawn = Math.random() > 0.5 ? 1 : 2;
+      const numCarsToSpawn = Math.floor(Math.random() * (maxCarsToSpawn - minCarsToSpawn + 1)) + minCarsToSpawn;
       const availableLanes = [...LANES];
       
       const newCars: CarData[] = [];

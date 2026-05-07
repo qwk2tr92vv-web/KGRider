@@ -25,7 +25,11 @@ export const translations = {
     languageSetting: 'LANGUAGE:',
     soundSetting: 'SOUND:',
     on: 'ON',
-    off: 'OFF'
+    off: 'OFF',
+    difficulty: 'DIFFICULTY:',
+    easy: 'EASY',
+    medium: 'MEDIUM',
+    hard: 'HARD'
   },
   tr: {
     play: 'OYNA',
@@ -53,6 +57,10 @@ export const translations = {
     languageSetting: 'DİL:',
     soundSetting: 'SES:',
     on: 'AÇIK',
-    off: 'KAPALI'
+    off: 'KAPALI',
+    difficulty: 'ZORLUK:',
+    easy: 'KOLAY',
+    medium: 'ORTA',
+    hard: 'ZOR'
   }
 };

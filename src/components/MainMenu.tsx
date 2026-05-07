@@ -71,6 +71,16 @@ export default function MainMenu() {
           >
             <Camera size={14} /> {cameraView}
           </button>
+          <button 
+            onClick={() => {
+              const diffs: Array<'easy' | 'medium' | 'hard'> = ['easy', 'medium', 'hard'];
+              const nextIdx = (diffs.indexOf(useGameStore.getState().difficulty) + 1) % diffs.length;
+              useGameStore.getState().setDifficulty(diffs[nextIdx]);
+            }}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800 border border-gray-600 text-white text-xs font-bold uppercase"
+          >
+            {t.difficulty} {t[useGameStore.getState().difficulty]}
+          </button>
         </div>
       </div>
 

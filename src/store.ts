@@ -40,6 +40,9 @@ interface GameState {
   cameraView: 'thirdPerson' | 'firstPerson' | 'far';
   setCameraView: (view: 'thirdPerson' | 'firstPerson' | 'far') => void;
 
+  difficulty: 'easy' | 'medium' | 'hard';
+  setDifficulty: (diff: 'easy' | 'medium' | 'hard') => void;
+
   gameId: number;
   incrementGameId: () => void;
 
@@ -94,6 +97,9 @@ export const useGameStore = create<GameState>()(
 
       cameraView: 'thirdPerson',
       setCameraView: (view) => set({ cameraView: view }),
+
+      difficulty: 'medium',
+      setDifficulty: (diff) => set({ difficulty: diff }),
 
       gameId: 0,
       incrementGameId: () => set((state) => ({ gameId: state.gameId + 1 })),
